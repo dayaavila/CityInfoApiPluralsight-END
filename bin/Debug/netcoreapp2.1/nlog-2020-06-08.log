@@ -1,0 +1,207 @@
+2020-06-08 16:33:51.3246|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\dayaa\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-08 16:33:53.5282|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2020-06-08 16:33:53.5282|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2020-06-08 16:33:53.7112|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 203.1997ms 200 
+2020-06-08 16:33:54.7951|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1288.5746ms 404 text/plain
+2020-06-08 16:33:55.0797|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/favicon.ico  
+2020-06-08 16:33:55.0990|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 17.6692ms 404 text/plain
+2020-06-08 16:34:17.4918|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/api/testdatabase  
+2020-06-08 16:34:17.8106|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "TestDatabase", controller = "Dummy"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TestDatabase() on controller CityInfoAPI.Controllers.DummyController (CityInfoAPI).
+2020-06-08 16:34:18.6946|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 16:34:27.6280|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/api/testdatabase  
+2020-06-08 16:34:27.6657|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "TestDatabase", controller = "Dummy"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TestDatabase() on controller CityInfoAPI.Controllers.DummyController (CityInfoAPI).
+2020-06-08 16:34:27.7152|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 16:34:29.6321|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2,199ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CityInfoDB];
+2020-06-08 16:34:29.9041|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (1,851ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CityInfoDB];
+2020-06-08 16:41:20.7635|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\dayaa\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-08 16:41:23.5439|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2020-06-08 16:41:23.7949|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2020-06-08 16:41:23.8107|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/api/testdatabase  
+2020-06-08 16:41:23.8899|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 543.5985ms 200 
+2020-06-08 16:41:24.8339|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 944.3684ms 404 text/plain
+2020-06-08 16:41:24.9464|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "TestDatabase", controller = "Dummy"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TestDatabase() on controller CityInfoAPI.Controllers.DummyController (CityInfoAPI).
+2020-06-08 16:41:27.4527|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 16:41:29.2861|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (397ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2020-06-08 16:41:29.7773|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Cities] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [Description] nvarchar(200) NULL,
+    CONSTRAINT [PK_Cities] PRIMARY KEY ([Id])
+);
+2020-06-08 16:41:29.8107|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [PointOfInterests] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [CityId] int NOT NULL,
+    CONSTRAINT [PK_PointOfInterests] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PointOfInterests_Cities_CityId] FOREIGN KEY ([CityId]) REFERENCES [Cities] ([Id]) ON DELETE CASCADE
+);
+2020-06-08 16:41:29.8769|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_PointOfInterests_CityId] ON [PointOfInterests] ([CityId]);
+2020-06-08 16:41:30.2283|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfoAPI.Controllers.DummyController.TestDatabase (CityInfoAPI) - Validation state: Valid
+2020-06-08 16:41:30.4255|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method CityInfoAPI.Controllers.DummyController.TestDatabase (CityInfoAPI), returned result Microsoft.AspNetCore.Mvc.OkResult in 5.2497ms.
+2020-06-08 16:41:30.5928|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 200
+2020-06-08 16:41:30.6179|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfoAPI.Controllers.DummyController.TestDatabase (CityInfoAPI) in 5646.1056ms
+2020-06-08 16:41:30.6407|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 6864.985ms 200 
+2020-06-08 18:25:32.9691|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 18:25:45.8571|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (226ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CityInfoDB];
+2020-06-08 18:25:45.9534|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (92ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CityInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-06-08 18:25:46.0380|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Cities] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [Description] nvarchar(200) NULL,
+    CONSTRAINT [PK_Cities] PRIMARY KEY ([Id])
+);
+2020-06-08 18:25:46.0380|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [PointOfInterests] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [CityId] int NOT NULL,
+    CONSTRAINT [PK_PointOfInterests] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PointOfInterests_Cities_CityId] FOREIGN KEY ([CityId]) REFERENCES [Cities] ([Id]) ON DELETE CASCADE
+);
+2020-06-08 18:25:46.0380|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_PointOfInterests_CityId] ON [PointOfInterests] ([CityId]);
+2020-06-08 22:45:11.5001|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 22:45:16.2551|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-08 22:45:16.4252|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (44ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-06-08 22:45:16.4252|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-08 22:45:16.4252|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-06-08 22:45:16.4495|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20200608162546_CityInfoDBInitialMigration'.
+2020-06-08 22:45:16.5543|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Cities] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [Description] nvarchar(200) NULL,
+    CONSTRAINT [PK_Cities] PRIMARY KEY ([Id])
+);
+2020-06-08 23:30:29.3947|INFO|CityInfoAPI.Program|Initializing application...JEOÑFJEOJDLJCOVLXKM{ODCJ...
+2020-06-08 23:30:35.2931|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 23:30:41.9765|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (344ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CityInfoDB];
+2020-06-08 23:30:42.3055|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (317ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CityInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-06-08 23:30:42.4290|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-06-08 23:30:42.4513|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-08 23:30:42.4767|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-06-08 23:30:42.4908|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20200608162546_CityInfoDBInitialMigration'.
+2020-06-08 23:30:42.5293|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Cities] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [Description] nvarchar(200) NULL,
+    CONSTRAINT [PK_Cities] PRIMARY KEY ([Id])
+);
+2020-06-08 23:30:42.5407|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [PointOfInterests] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [CityId] int NOT NULL,
+    CONSTRAINT [PK_PointOfInterests] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PointOfInterests_Cities_CityId] FOREIGN KEY ([CityId]) REFERENCES [Cities] ([Id]) ON DELETE CASCADE
+);
+2020-06-08 23:30:42.5407|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_PointOfInterests_CityId] ON [PointOfInterests] ([CityId]);
+2020-06-08 23:30:42.5741|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200608162546_CityInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2020-06-08 23:30:42.8750|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\dayaa\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-08 23:30:44.2701|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2020-06-08 23:30:44.2701|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2020-06-08 23:30:44.4051|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 107.6114ms 200 
+2020-06-08 23:30:45.0988|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 832.0362ms 404 text/plain
+2020-06-08 23:30:45.2368|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/favicon.ico  
+2020-06-08 23:30:45.2519|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 14.5164ms 404 text/plain
+2020-06-08 23:45:39.5897|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 23:47:49.8388|INFO|CityInfoAPI.Program|Initializing application...JEOÑFJEOJDLJCOVLXKM{ODCJ...
+2020-06-08 23:47:52.5444|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-08 23:47:53.1369|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (77ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CityInfoDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2020-06-08 23:47:53.1899|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (48ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+DROP DATABASE [CityInfoDB];
+2020-06-08 23:48:03.5222|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (285ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CityInfoDB];
+2020-06-08 23:48:03.7076|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CityInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-06-08 23:48:03.8151|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-06-08 23:48:03.8282|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-08 23:48:03.8364|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-06-08 23:48:03.8670|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20200608162546_CityInfoDBInitialMigration'.
+2020-06-08 23:48:03.9050|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Cities] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [Description] nvarchar(200) NULL,
+    CONSTRAINT [PK_Cities] PRIMARY KEY ([Id])
+);
+2020-06-08 23:48:03.9222|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [PointOfInterests] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(50) NOT NULL,
+    [CityId] int NOT NULL,
+    CONSTRAINT [PK_PointOfInterests] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PointOfInterests_Cities_CityId] FOREIGN KEY ([CityId]) REFERENCES [Cities] ([Id]) ON DELETE CASCADE
+);
+2020-06-08 23:48:03.9317|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_PointOfInterests_CityId] ON [PointOfInterests] ([CityId]);
+2020-06-08 23:48:03.9438|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200608162546_CityInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2020-06-08 23:48:03.9438|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20200608214539_CityInfoDBAddPoIDescription'.
+2020-06-08 23:48:03.9698|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [PointOfInterests] ADD [Description] nvarchar(200) NULL;
+2020-06-08 23:48:03.9735|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200608214539_CityInfoDBAddPoIDescription', N'2.1.14-servicing-32113');
+2020-06-08 23:48:04.1458|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\dayaa\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-08 23:48:04.9735|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2020-06-08 23:48:04.9735|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2020-06-08 23:48:05.0476|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 78.1269ms 200 
+2020-06-08 23:48:05.2875|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 324.1082ms 404 text/plain
